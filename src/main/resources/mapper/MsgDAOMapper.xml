@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wechat.travel.dao.MsgDAO">
+    <select id="queryAllMsg" resultType="Msg">
+        select msg_id msgId , category.category_id categoryId , category.category , title , commentNumber , time , writer , msg_text msgText , msg_img msgImg , type_id typeId , avatarUrl
+        from msg , category
+        where msg.category_id=category.category_id;
+    </select>
+
+    <select id="queryTypeId" resultType="Integer">
+        select type_id typeId from type where type_name=#{typeName};
+    </select>
+
+    <insert id="saveOneMsg" >
+        insert into msg(category_id , title , commentNumber , time , writer , msg_text , msg_img , type_id , avatarUrl)
+        values
+        (#{msg.categoryId} , #{msg.title} , #{msg.commentNumber} , #{msg.time} , #{msg.writer} , #{msg.msgText} , #{msg.msgImg} , #{msg.typeId} , #{msg.avatarUrl});
+    </insert>
+
+    <select id="queryOneMsg" resultType="Msg">
+        select msg_id msgId , category_id categoryId , title , commentNumber , time , writer , msg_text msgText , msg_img msgImg , type_id typeId , avatarUrl
+        from msg
+        where msg_id=#{msgId};
+    </select>
+
+    <select id="queryAvatarUrlByOpenid" resultType="String">
+        select avatarUrl
+        from wechat
+        where
+        nickName=#{writer};
+    </select>
+</mapper>
