@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wechat.travel.dao.CommentDAO">
+    <insert id="insertComment">
+        insert into comment(msg_id , commenter , comment_text , comment_img , time , openid , avatarUrl)
+        values
+        (#{comment.msgId} , #{comment.commenter} , #{comment.commentText} , #{comment.commentImg} , #{comment.time} , #{comment.openid} , #{comment.avatarUrl});
+    </insert>
+
+    <select id="queryAllCommentByMsgId" resultType="Comment">
+        select msg_id msgId, commenter , comment_text commentText, comment_img commentImg, time , openid , avatarUrl
+        from comment
+        where msg_id=#{msgId};
+    </select>
+
+    <select id="queryAvatarUrl" resultType="String">
+        select avatarUrl
+        from wechat
+        where wechat.openid=#{openid};
+    </select>
+</mapper>

@@ -1,0 +1,12 @@
+{
+    "usingComponents":
+    {
+         "i-toast": "../../dist/toast/index"
+    },
+    "navigationBarBackgroundColor": "#FF9900",
+    "navigationBarTitleText": "详细内容",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#fff"
+  }

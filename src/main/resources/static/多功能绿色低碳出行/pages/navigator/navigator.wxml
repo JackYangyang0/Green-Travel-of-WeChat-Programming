@@ -1,0 +1,52 @@
+<!--绑定点击事件-->
+<!--绑定输入事件-->
+<view wx:if="{{addListShow}}">
+  <view class="top">
+    <view class="search-box {{addListShow?'search-box1':''}}" wx:if="{{judge == 'start'}}" data-status="start">
+      <input bindinput="getstart" placeholder="起点"></input>
+    </view>
+    <view class="search-box {{addListShow?'search-box1':''}}" wx:elif="{{judge == 'end'}}" data-status="end">
+      <input bindinput="getend" placeholder="终点"></input>
+    </view>
+  </view>
+<!--关键词输入提示列表渲染-->
+<view class="add-list-box">
+<scroll-view class="add-list" scroll-y>
+  <view class="add-item" wx:for="{{suggestion}}" wx:key="index">
+    <!--绑定回填事件-->
+    <view bindtap="backfill" id="{{index}}" data-name="{{item.title}}">
+      <!--根据需求渲染相应数据-->
+      <!--渲染地址title-->
+      <view class="title">{{item.title}}</view>
+      <!--渲染详细地址-->
+      <view class="add">{{item.addr}}</view>
+    </view>
+  </view>
+</scroll-view>
+</view>
+</view>
+ 
+<view wx:if="{{!addListShow && !chooseCity}}">
+<view class="map-inputtips-input">
+  <view class="start">起点
+  <input bindtap="getstart" placeholder="输入起点" focus="true" value="{{startLocation.title}}"></input>
+</view>
+<view class="hr"></view>
+  <view class="end">终点
+  <input bindtap="getend" placeholder="输入终点" focus="true" value="{{endLocation.title}}"></input>
+  </view>
+</view>
+<view class="flex-style">
+  <view class="flex-item {{status == 'normal' ? 'active' : ''}}" data-status="normal" bindtouchstart="goTo">普通</view>
+  <view class="flex-item {{status == 'couple' ? 'active' : ''}}" data-status="couple" bindtouchstart="goTo">情侣</view>
+  <view class="flex-item {{status == 'family' ? 'active' : ''}}" data-status="family" bindtouchstart="goTo">亲子</view>
+  <view class="flex-item {{status == 'scenery' ? 'active' : ''}}" data-status="scenery" bindtouchstart="goTo">风景</view>
+  <view class="flex-item {{status == 'security' ? 'active' : ''}}" data-status="security" bindtouchstart="goTo">安全</view>
+</view>
+<!--地图容器-->
+<map id="myMap"
+   style="width:100%;height:1400rpx;"
+   longitude="{{longitude}}"
+   latitude="{{latitude}}" scale="17" polyline="{{polyline}}" markers="{{markers}}">
+</map>
+</view>

@@ -1,0 +1,31 @@
+<view class="content">
+  <view class="bg">
+    <view class="name">社区交流</view>  
+    <button class="btn" style="margin-right: -15rpx; width: 200rpx" bindtap="img">发帖</button>
+    <image bindtap="img" class="img" src="../../images/plus.jpeg"></image>
+  </view>
+</view>  
+ 
+<view wx:for="{{list}}" wx:key="list">
+<navigator url="../detail/detail?id={{item.msgId}}" open-type="navigate" >
+  <view class="title">【{{item.category}}】{{item.title}}</view>
+  <view>
+    <view class="text">{{item.msgText}}</view>
+    <navigator style="color:#FF9900;" url="../detail/detail?id={{item.msgId}}" decode="true">查看更多 ∨</navigator>
+  </view>
+  <block class="pic"  wx:for="{{item.msgImgs}}" wx:if="{{item!=''}}">
+    <image style="width:30%;height:69px;margin-right:25rpx;" src="{{item}}"/>
+  </block>
+  <view class="info">
+    <view class="desc">
+       <text>{{item.commentNumber}}条评论</text>
+       <text>发布时间：{{item.time}}</text>
+       <text>楼主：{{item.writer}}</text>
+    <view class="opr">
+    </view>
+  </view>
+  </view>
+
+<view class="hr"></view>
+</navigator>
+</view>

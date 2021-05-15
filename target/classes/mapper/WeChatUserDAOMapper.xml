@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wechat.travel.dao.WeChatUserDAO">
+    <select id="queryOneWeChatUser" resultType="WeChatUser">
+        select openid
+        from wechat
+        where openid=#{openid};
+    </select>
+
+    <insert id="saveWeChatUserOpenid" >
+        insert into wechat(openid , avatarUrl , city , country , gender , language , nickName , province)
+        values(#{weChatUser.openid} , #{weChatUser.avatarUrl} , #{weChatUser.city} , #{weChatUser.country} , #{weChatUser.gender} , #{weChatUser.language} , #{weChatUser.nickName} , #{weChatUser.province});
+    </insert>
+
+    <update id="saveWeChatUser">
+        update wechat set avatarUrl=#{weChatUser.avatarUrl} ,
+        city=#{weChatUser.city} ,
+        country=#{weChatUser.country} ,
+        gender=#{weChatUser.gender} ,
+        language=#{weChatUser.language} ,
+        nickName=#{weChatUser.nickName} ,
+        province=#{weChatUser.province}
+        where
+        openid=#{weChatUser.openid};
+    </update>
+</mapper>

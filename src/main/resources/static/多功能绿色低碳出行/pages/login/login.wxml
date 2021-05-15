@@ -1,0 +1,44 @@
+<!--pages/login/login.wxml-->
+<view class="content">
+  
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <!-- logo图标 -->
+    <view class="logoSize">
+      <image class="logo" src="../../images/logo.jpg" mode="aspectFit"></image>
+  </view>
+    <!-- 用户 -->
+    <view class="account">
+        <view class="title">账号</view>
+        <view class="num">
+          <input bindinput="accountInput" placeholder="用户名/邮箱/手机号" placeholder-style="color:#99999" value="{{username}}" name="username" />
+        </view>
+      </view>
+
+      <!-- 分割线 -->
+      <view class="hr"></view>
+
+      <!-- 密码 -->
+      <view class="account">
+        <view class="title">密码</view>
+        <view class="num">
+          <input placeholder="请输入密码" password placeholder-style="color:#99999" value="{{password}}" name="password" />
+        </view>
+            <!-- see logo图标 -->
+        <view class="see">
+          <image src="/images/see.jpeg" style="width:20px;height:15px"></image>
+        </view>
+      </view>
+
+      <!-- 分割线 -->
+      <view class="hr"></view>
+
+      <!-- 登陆按钮 -->
+      <button class="btn" open-type="getUserInfo" form-type="submit" type="{{btnstate}}" disabled="{{disabled}}">登陆</button>
+    </form>
+      <!-- 注册 -->
+      <view class="operate">
+        <view><navigator url="../reg/reg">手机快速注册</navigator></view>
+        <view>找回密码</view>
+      </view>
+      <view class="fastLogin"><button wx:if="{{canIUse}}" bindtap="getUserProfile">授权快速登录</button></view>
+</view>

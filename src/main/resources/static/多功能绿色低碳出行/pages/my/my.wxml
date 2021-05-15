@@ -1,0 +1,18 @@
+<view class="user_info_warp">
+  <view wx:if="{{userInfo.avatarUrl}}" class="user_img_warp">
+    <image class="user_bg" src="{{userInfo.avatarUrl}}"></image>
+    <view class="user_info">
+      <image class="user_icon" src="{{userInfo.avatarUrl}}"></image>
+      <view class="user_name">{{userInfo.nickName}}</view>
+    </view>
+  </view>
+  <button wx:else class="user_btn">
+    <navigator open-type="redirect" url="../login/login">登录</navigator>
+  </button>
+</view>
+<i-cell title="版本信息" is-link url="../../pages/version/version"></i-cell>
+<view class="hr"></view>
+<i-cell title="功能介绍" is-link url="../../pages/function/function"></i-cell>
+<view class="hr"></view>
+<i-cell title="个人消息" is-link url="../../pages/news/news"></i-cell>
+<view class="hr"></view>

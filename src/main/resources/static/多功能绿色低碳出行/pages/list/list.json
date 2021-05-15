@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "i-row": "../../dist/row/index",
+    "i-col": "../../dist/col/index"
+  },
+  "navigationBarBackgroundColor": "#FF9900",
+  "navigationBarTitleText": "论坛",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

@@ -1,0 +1,62 @@
+ <view>
+ <view class="title">【{{content.category}}】{{content.title}}</view>
+  <view class="desc">
+    <view class="publish">
+      <view>
+<image src="{{content.avatarUrl}}"style="width:100rpx;height:100rpx;"></image>
+<!-- <image class="run" mode="widthFix" src="../../static/bai.png"></image> -->
+</view>
+      <view class="company">
+        <view>{{content.writer}}</view>
+        <view class="attr">
+           <text class="mark">{{class}}</text>
+           <text class="time">{{item.time}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <text class="article" user-select="true">
+
+    {{content.msgText}}
+   
+  </text>
+  <view class="img" wx:for="{{content.msgImgs}}" >
+    <image style="weight: 40%;" mode="aspectFit" src="{{item}}">
+    </image>
+  </view>
+   </view>
+
+    <view class="answer-feed" wx:for="{{listPL}}" >
+ <view style=" weight:100%;height:10rpx; background-color:#0094ff;overflow: hidden;display: inline-block;text-align: justify;text-align-last: justify;"></view>
+        <view  bindtap="bindItemTap" class="feed-item">
+                    <image class="icon"  src="{{item.avatarUrl}}"></image>
+                     <!-- <image class="run" mode="widthFix" src="../../static/bai.png"></image> -->
+                    <text class="commenter">{{item.commenter}}</text>
+            <view class="feed-content">
+                <view class="answer-body">
+                    <view>
+                  <text class="answer-txt" decode="true">&nbsp;&nbsp;&nbsp;&nbsp;{{item.commentText}}</text>
+                    </view>
+                    <view class="answer-actions">
+                        <view class="time">
+                        <a>{{item.time}}</a>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+</view>
+<text >\n</text>
+<text >\n</text>
+  <form bindsubmit="formSubmit">
+  <view class="comment">
+    <view class="write"><input type="textarea" name="comment" placeholder="写评论..." value="{{value}}"/></view>
+    <view class="opr">
+       <button class="sumbit" form-type="submit">评论</button>
+    </view>
+  </view>
+ </form> 
+ <i-toast id="toast" />
+
+

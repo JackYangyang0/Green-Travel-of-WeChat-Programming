@@ -1,0 +1,49 @@
+page{
+  width:750rpx;
+  height:100%;
+}
+
+.picker{
+  margin-top: -20rpx;
+  margin-left: 250rpx;
+  color: gray;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+}
+
+  button {
+    width: 80%;
+    margin-top: 300rpx;
+    background-color:#ffcc66;
+    color: white;
+    border-radius: 98rpx; 
+  }
+
+ .hr{
+  background: #E0E3DA;
+  width: 100%;
+  height: 3rpx;
+ }
+
+ .image{
+  width:31%;
+  height: 100px;
+  padding: 2px
+}
+ 
+.moment_img{
+  width: 98px;
+  height: 98px;
+}
+ 
+.image_content{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px
+}
+.choosePicture{
+  color: gray;
+  margin-left: 20rpx;
+}
+

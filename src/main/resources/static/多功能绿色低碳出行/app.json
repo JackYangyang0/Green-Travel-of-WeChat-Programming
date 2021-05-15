@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/reg/reg",
+    "pages/list/list",
+    "pages/my/my",
+    "pages/next/next",
+    "pages/detail/detail",
+    "pages/img/img",
+    "pages/function/function",
+    "pages/news/news",
+    "pages/version/version",
+    "pages/navigator/navigator"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#FF9900",
+    "navigationBarTitleText": "多功能绿色低碳出行",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#fff"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#fff",
+    "backgroundColor": "#FF9900",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "icon/home.png",
+        "selectedIconPath": "icon/home2.png"
+      },
+      {
+        "pagePath": "pages/list/list",
+        "text": "论坛",
+        "iconPath": "icon/work.png",
+        "selectedIconPath": "icon/work2.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "个人空间",
+        "iconPath": "icon/my.png",
+        "selectedIconPath": "icon/my2.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+    "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
