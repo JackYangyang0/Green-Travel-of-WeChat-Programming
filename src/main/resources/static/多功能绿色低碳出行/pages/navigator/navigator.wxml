@@ -50,3 +50,10 @@
    latitude="{{latitude}}" scale="17" polyline="{{polyline}}" markers="{{markers}}">
 </map>
 </view>
+<view class="text_box" wx:if="{{detailStatus}}">
+  <view class="text">使用汽车大约碳排量：{{carbon_car}}kg</view>
+  <view class="text">使用公交大约碳排量：{{carbon_bus}}kg</view>
+  <view class="text">使用摩托大约碳排量：{{carbon_moto}}kg</view>
+  <view class="detail_button" bindtouchstart="goDetail">详情</view>
+</view>
+

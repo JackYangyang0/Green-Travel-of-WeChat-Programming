@@ -40,7 +40,11 @@ Page({
       dottedLine:false
     }],
     markers: [],
-    status: ''
+    status: '',
+    carbon_car: '',
+    carbon_bus: '',
+    carbon_moto: '',
+    detailStatus: false
   },
   onLoad: function (options) {
     var endLocation = JSON.parse(options.endLocation);
@@ -178,6 +182,10 @@ Page({
     var start = that.data.startLocation.latitude + "," + that.data.startLocation.longitude;
     var end = that.data.endLocation.latitude + "," + that.data.endLocation.longitude;
     var status = e.target.dataset.status;
+    var distance = that.distance(that.data.startLocation.latitude , that.data.startLocation.longitude , that.data.endLocation.latitude , that.data.endLocation.longitude);
+    var carbon_car = distance * 0.11;
+    var carbon_bus = distance * 0.069;
+    var carbon_moto = distance * 0.094;
     that.setData({
       markers: [{
         id: 0,
@@ -194,7 +202,11 @@ Page({
         iconPath: "../../images/终点.png",
         width: 40,
         height: 40
-      }]
+      }],
+      detailStatus: true,
+      carbon_car: carbon_car.toFixed(5),
+      carbon_bus: carbon_bus.toFixed(5),
+      carbon_moto: carbon_moto.toFixed(5)
     });
     wx.request({
       url:'https://apis.map.qq.com/ws/direction/v1/driving/?from=' + start + '&to=' + end + '&output=json&callback=cb&key=W57BZ-JDB6X-XPA4H-Z76MI-73FF2-24BT4',
@@ -421,5 +433,17 @@ Page({
     wx.navigateTo({
       url: '../navigator/navigator?endLocation=' + endLocation,
     })
-  }
+  },
+  // 计算两地距离的方法
+  distance: function (la1, lo1, la2, lo2) {
+    var La1 = la1 * Math.PI / 180.0;
+    var La2 = la2 * Math.PI / 180.0;
+    var La3 = La1 - La2;
+    var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
+    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+    s = s * 6378.137;
+    s = Math.round(s * 10000) / 10000;
+    s = s.toFixed(2);
+    return s;
+  },
 })
